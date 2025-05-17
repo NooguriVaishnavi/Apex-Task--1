@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef6f9;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            color: #006699;
+        }
+        p {
+            font-size: 16px;
+        }
+        a {
+            color: #006699;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            background-color: #006699;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #004d66;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My Webpage</h1>
+    <p>This is a simple webpage with basic HTML structure.</p>
+    <p>You can visit <a href="https://www.google.com" target="_blank">Google</a> for more information.</p>
+
+    <button class="button" onclick="showAlert()">Click Me!</button>
+
+    <script>
+        function showAlert() {
+            alert("Hello! You clicked the button!");
+        }
+    </script>
+
+</body>
+</html>
