@@ -1,0 +1,75 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+header {
+  background: #005f73;
+  color: white;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+section {
+  padding: 40px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+h2 {
+  color: #005f73;
+}
+
+/* To-Do List styles */
+#taskInput {
+  padding: 10px;
+  width: 200px;
+}
+
+#addBtn {
+  padding: 10px;
+  margin-left: 10px;
+}
+
+#taskList li {
+  margin: 5px 0;
+  background: #e0f7fa;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Product styles */
+select {
+  margin: 10px;
+  padding: 5px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+footer {
+  background: #005f73;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}

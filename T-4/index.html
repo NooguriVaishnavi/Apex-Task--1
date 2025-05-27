@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vaishnavi's Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #005f73;
+      color: white;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+    section {
+      padding: 40px 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    h2 {
+      color: #005f73;
+    }
+    /* To-Do List styles */
+    #taskInput {
+      padding: 10px;
+      width: 200px;
+    }
+    #addBtn {
+      padding: 10px;
+      margin-left: 10px;
+    }
+    #taskList li {
+      margin: 5px 0;
+      background: #e0f7fa;
+      padding: 10px;
+      cursor: pointer;
+    }
+    /* Product styles */
+    select {
+      margin: 10px;
+      padding: 5px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    footer {
+      background: #005f73;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vaishnavi's Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#todo">To-Do List</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I’m Vaishnavi, a web developer intern passionate about building user-friendly applications and continuously learning new technologies.</p>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <ul>
+      <li>Smart Street Light Using Solar</li>
+      <li>To-Do List Web App</li>
+      <li>Product Listing Filter Page</li>
+    </ul>
+  </section>
+
+  <section id="todo">
+    <h2>To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter a task" />
+    <button id="addBtn">Add Task</button>
+    <ul id="taskList"></ul>
+  </section>
+
+  <section id="products">
+    <h2>Product Listing</h2>
+    <label>
+      Category:
+      <select id="categoryFilter" onchange="filterAndSort()">
+        <option value="all">All</option>
+        <option value="tech">Tech</option>
+        <option value="clothing">Clothing</option>
+      </select>
+    </label>
+    <label>
+      Sort by:
+      <select id="sortFilter" onchange="filterAndSort()">
+        <option value="default">Default</option>
+        <option value="price">Price</option>
+        <option value="rating">Rating</option>
+      </select>
+    </label>
+    <div id="productContainer"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: vaishnavi@example.com</p>
+    <p>LinkedIn: linkedin.com/in/vaishnavi</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vaishnavi | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // To-Do List Logic
+    function getTasks() {
+      return JSON.parse(localStorage.getItem("tasks") || "[]");
+    }
+    function saveTasks(tasks) {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+    function renderTasks() {
+      const taskList = document.getElementById("taskList");
+      taskList.innerHTML = "";
+      const tasks = getTasks();
+      tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.textContent = task;
+        li.onclick = () => {
+          tasks.splice(index, 1);
+          saveTasks(tasks);
+          renderTasks();
+        };
+        taskList.appendChild(li);
+      });
+    }
+    document.getElementById("addBtn").addEventListener("click", () => {
+      const taskInput = document.getElementById("taskInput");
+      const task = taskInput.value.trim();
+      if (task !== "") {
+        const tasks = getTasks();
+        tasks.push(task);
+        saveTasks(tasks);
+        taskInput.value = "";
+        renderTasks();
+      }
+    });
+    renderTasks();
+
+    // Product Listing Logic
+    const products = [
+      { name: "T-Shirt", category: "clothing", price: 25, rating: 4.2 },
+      { name: "Laptop", category: "tech", price: 900, rating: 4.8 },
+      { name: "Headphones", category: "tech", price: 120, rating: 4.5 },
+      { name: "Jeans", category: "clothing", price: 60, rating: 4.0 }
+    ];
+    function filterAndSort() {
+      const category = document.getElementById("categoryFilter").value;
+      const sort = document.getElementById("sortFilter").value;
+
+      let filtered = category === "all"
+        ? products
+        : products.filter(product => product.category === category);
+
+      if (sort === "price") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sort === "rating") {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      displayProducts(filtered);
+    }
+    function displayProducts(productList) {
+      const container = document.getElementById("productContainer");
+      container.innerHTML = "";
+      productList.forEach(product => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <h3>${product.name}</h3>
+          <p>Category: ${product.category}</p>
+          <p>Price: $${product.price}</p>
+          <p>Rating: ${product.rating}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+    filterAndSort();
+  </script>
+</body>
+</html>
+
