@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web App Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">Web App</div>
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#hero">Web App</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container hero-text">
+      <h2>Welcome to the <span>Web App</span></h2>
+      <p>Explore projects, products, and more in this interactive portfolio.</p>
+      <a href="#projects" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <p>This web application is built using HTML5, CSS3, and JavaScript. It demonstrates responsive design, interactivity, and product filtering capabilities.</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="project-grid">
+        <div class="project-card" data-category="frontend">
+          <img src="assets/project1.jpg" alt="Project 1">
+          <div class="project-info">
+            <h3>Portfolio Website</h3>
+            <p>A personal website showcasing skills and projects.</p>
+          </div>
+        </div>
+        <div class="project-card" data-category="backend">
+          <img src="assets/project2.jpg" alt="Project 2">
+          <div class="project-info">
+            <h3>To-Do App</h3>
+            <p>A simple CRUD application using vanilla JavaScript.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products">
+    <div class="container">
+      <h2 class="section-title">Products</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="electronics">Electronics</button>
+        <button class="filter-btn" data-filter="books">Books</button>
+        <button class="filter-btn" data-filter="fashion">Fashion</button>
+      </div>
+      <div class="project-grid">
+        <div class="project-card" data-category="electronics">
+          <img src="assets/laptop.jpg" alt="Laptop">
+          <div class="project-info">
+            <h3>Gaming Laptop</h3>
+            <p>Powerful laptop for gaming and work.</p>
+            <p>Price: $1200</p>
+            <p>Rating: ★★★★☆</p>
+          </div>
+        </div>
+        <div class="project-card" data-category="books">
+          <img src="assets/book.jpg" alt="Book">
+          <div class="project-info">
+            <h3>JavaScript Guide</h3>
+            <p>A complete book to learn JS from scratch.</p>
+            <p>Price: $25</p>
+            <p>Rating: ★★★★★</p>
+          </div>
+        </div>
+        <div class="project-card" data-category="fashion">
+          <img src="assets/shirt.jpg" alt="Shirt">
+          <div class="project-info">
+            <h3>Casual Shirt</h3>
+            <p>Comfortable and stylish shirt for daily wear.</p>
+            <p>Price: $30</p>
+            <p>Rating: ★★★★☆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <form id="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+      <p id="form-message" class="form-message"></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Web App. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+
+</body>
+</html>
